@@ -1,6 +1,6 @@
 # ZoomBot
 
-ZoomBot is a Python class that allows you to create a bot to connect to Zoom conferences and perform various actions, such as turning on/off the camera and microphone, accepting computer sound, sending messages to the chat, and taking screenshots.
+ZoomBot is a Python class that allows you to create a bot to connect to Zoom conferences and perform various actions, such as turning on/off the camera and microphone, sending messages to the chat, and taking screenshots.
 
 ## Installation
 
