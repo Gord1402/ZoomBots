@@ -1,7 +1,8 @@
 import os
 import time
+from io import BytesIO
 
-import speech_recognition as sr
+from PIL import Image
 from selenium import webdriver
 from selenium.common import NoSuchElementException, WebDriverException, ElementNotInteractableException, \
     ElementClickInterceptedException
@@ -12,11 +13,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
-from datetime import datetime
-from PIL import Image
-from io import BytesIO
-
-r = sr.Recognizer()
 
 
 class ZoomBot:
@@ -107,6 +103,19 @@ class ZoomBot:
             return False
         return True
 
+    def wait_to_connect(self, timeout=10) -> bool:
+        """
+        Waits to be fully connected
+        :param timeout: Timeout in seconds
+        :return: True if connected. False if the timeout has expired.
+        """
+        start_time = time.time()
+        while not self.is_connected():
+            time.sleep(0.5)
+            if time.time() - start_time > timeout:
+                return False
+        return True
+
     def _move_mouse(self):
         """
         Move mouse to show footer
@@ -157,7 +166,7 @@ class ZoomBot:
         self._move_mouse()
         self._wait_and_click_selector("#foot-bar > div:nth-child(1) > div:nth-child(2) > button")
 
-    def send_message(self, text:str):
+    def send_message(self, text: str):
         """
         Send message to chat
         :param text: Message text
