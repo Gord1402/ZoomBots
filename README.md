@@ -34,7 +34,8 @@ The following methods are available in the ZoomBot class:
 - `connect()`: Connects the bot to the conference.
 - `disconnect()`: Disconnects the bot from the conference.
 - `is_in_wait_room() -> bool`: Returns True if the bot is in the wait room, otherwise False.
-- `is_connected()` -> bool: Returns True if the bot is connected to the conference, otherwise False.
+- `is_connected() -> bool`: Returns True if the bot is connected to the conference, otherwise False.
+- `wait_to_connect(timeout=10) -> bool`: Waiting for connection and return True. return False if the timeout has expired.
 - `_move_mouse()`: Moves the mouse to show the footer.
 - `accept_sound()`: Presses the button to accept computer sound.
 - `turn_microphone()`: Turns the microphone on or off.
@@ -49,10 +50,12 @@ The following methods are available in the ZoomBot class:
 Here is an example of how to use ZoomBot:
 
 ```python
-from zoom_bot import ZoomBot
+from ZoomBot import ZoomBot
 
 bot = ZoomBot(zoom_id="123456789", pwd="abcd1234", name="My Bot")
 bot.connect()
+
+bot.wait_to_connect()
 
 # Turn on camera and microphone
 bot.turn_camera()
@@ -66,6 +69,7 @@ screenshot = bot.screenshot()
 screenshot.show()
 
 bot.disconnect()
+bot.close()
 ```
 
 ## License
