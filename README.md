@@ -41,7 +41,7 @@ The following methods are available in the ZoomBot class:
 - `turn_camera()`: Turns the camera on or off.
 - `send_message(text:str)`: Sends a message to the chat.
 - `get_messages() -> list[dict]`: Returns a list of dictionaries with information about the messages in the chat. Each dictionary has the following keys: "from", "to", "time", and "text".
-- `screenshot() -> Image: Takes a screenshot of the screen and returns a PIL.Image object.
+- `screenshot()` -> Image: Takes a screenshot of the screen and returns a PIL.Image object.
 - `close()`: Closes the browser.
 
 ## Example
