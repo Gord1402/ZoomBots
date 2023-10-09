@@ -39,8 +39,6 @@ class MediaDeviceStream:
             start = time.time()
             ret, frame = self.video_stream.read()
             if ret:
-                cv2.imshow("Image", frame)
-                cv2.waitKey(1)
                 self.media_server.add_next_frame(frame)
             else:
                 self.video_stream.set(cv2.CAP_PROP_POS_FRAMES, 0)
